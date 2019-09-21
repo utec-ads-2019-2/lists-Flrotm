@@ -3,7 +3,7 @@
 
 #include "list.h"
 #include <iostream>
-#include <iterators/bidirectional_iterator.h>
+#include "iterators/bidirectional_iterator.h"
 #include <algorithm>
 using namespace std;
 
@@ -25,10 +25,12 @@ class CircularLinkedList : public List<T> {
     }
 
         void push_front(T value) {
+            // Falta manejo de punteros
             auto current=this->head;
             auto temp=new Node<T>;
 
             temp->data=value;
+            // Cuando la lista esté vacía dará error
             while (current->next!=this->head)
                 current=current->next;
             temp->next=temp;
@@ -42,6 +44,7 @@ class CircularLinkedList : public List<T> {
         }
 
         void push_back(T value) {
+            // Falta manejo de punteros
             auto current=this->head;
             auto temp=new Node<T>;
             temp->data=value;
@@ -57,8 +60,10 @@ class CircularLinkedList : public List<T> {
         }
 
         void pop_front() {
+            // Deberías mejor fijarte en los punteros
             if(this->nodes!=0){
             auto current=this->head;
+            // Aquí no deberías crear un nodo, eso reserva memoria
             auto temp=new Node<T>;
             while (current->next!=this->head){
                 temp=current;
@@ -70,6 +75,7 @@ class CircularLinkedList : public List<T> {
         void pop_back() {
             if(this->nodes!=0){
                 auto current=this->head;
+                // Aquí no deberías crear un nodo, eso reserva memoria
                 auto temp=new Node<T>;
                 while (current->next!=this->head)
                     current=current->next;

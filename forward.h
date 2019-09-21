@@ -33,10 +33,12 @@ class ForwardList : public List<T> {
         void push_back(T value) {
 
             Node<T>* node = new Node<T>;
+            // Falta igualar el siguiente a null, esto va a generar errores
             node->data = value;
             if (this->nodes == 0){
                 this->head = node;
                 this->tail = this->head;
+                // Esto podría estar fuera para evitar repetirlos
                 this->nodes++;
             } else {
                 this->tail->next = node;
@@ -48,6 +50,7 @@ class ForwardList : public List<T> {
         void pop_front() {
             if(this->nodes!=0){
             this->head=this->head->next;
+            // Forward no tiene prev
             delete this->head->prev;
             this->nodes--;}
         }
@@ -55,6 +58,7 @@ class ForwardList : public List<T> {
         void pop_back() {
             auto temp = this->tail;
             auto node = this->head;
+            // Si la lista está vacía esto dará error
             while(node->next!=this->tail){
                 node = node->next;
             }
@@ -64,7 +68,7 @@ class ForwardList : public List<T> {
         }
 
         T operator[](int index) {
-
+            // Si es negativo?
             if(index>=this->nodes){
                 throw length_error("error");
             }else {

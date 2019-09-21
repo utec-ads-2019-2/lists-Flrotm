@@ -28,6 +28,7 @@ class List {
         virtual string name() = 0;
 
         ~List() {
+            // Falta el destructor
             // TODO
         }
 };

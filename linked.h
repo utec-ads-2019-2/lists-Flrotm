@@ -25,6 +25,7 @@ class LinkedList : public List<T> {
     }
 
         void push_front(T value) {
+            // Los punteros hacia atrás?
             auto temp= new Node<T>;
             temp->data=value;
             temp->next=this->head;
@@ -32,6 +33,7 @@ class LinkedList : public List<T> {
         }
 
         void push_back(T value) {
+            // Los punteros hacia atrás?
             auto temp= new Node<T>;
             temp->data=value;
             temp->next=this->tail;
@@ -47,7 +49,7 @@ class LinkedList : public List<T> {
 
         void pop_back() {
             if(this->nodes!=0){
-
+                // No se deberían crear nodos al borrar
                 auto temp = new Node<T>;
                 for(int i=0;i<this->nodes-1;i++){
                     temp=temp->next;
